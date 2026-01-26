@@ -1,4 +1,4 @@
-def permutation_immutable(S:list[int]):
+def permutation_mutable(S:list[int]):
     
     result = []
     
@@ -16,7 +16,7 @@ def permutation_immutable(S:list[int]):
     helper(0)
     return result
 input=[1,2,3]
-r=permutation_immutable(input)
+r=permutation_mutable(input)
 print(f"For the given input {input} output is {r}")
 
         
