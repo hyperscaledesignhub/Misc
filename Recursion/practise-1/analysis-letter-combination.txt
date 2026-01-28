@@ -4,5 +4,43 @@ Let's say each letter is length '3' then these letters
 have to be placed in slate of size 3, how many combinations
 are there:  C(3,2) = 3 
 How this happen:
-a=123
--- => 12,   
+suppose digit=12
+then first as an intermediate node i am going to do the following:
+
+extract the letter corresponding to digit '1'-> 'abc'
+now i go through each letter and keep each letter in a slate
+And i call 3 subordinates for each letter starting with 'a', 'b' and 'c'
+Each subordinate comes back by filling the remaing part of slate
+with the remaining letters of the next digit
+
+Let's take first subordinate who started with letter 'a' in slate
+
+What my overall program is doing:
+
+it is extracting a given digit at a given index and getting the
+corresponding letters from it and adding to slate each letter
+at the given index. 
+
+For a moment don;t confuse the operation that is being done inside the helper
+while calling the subordinate, 
+ helper(slate+letter,i+1)
+We can think of this operation as:
+slate= slate+letter
+nextIndex = i+1
+helper(slate,nextIndex)
+That means any node is doing this operation of adding to slate
+and creating next index.
+
+Then calling subordinate to take care the next steps
+Hence next subordinate starts with 'a' and 
+finish adding remaining elements of the next digit and comes back
+
+that means it  extracts next digit '2' and keep adding the 
+letters 'def' to the next position in slate and comeback helper
+Similary next subordinate start with 'b' and add the next set of
+elements of the digit '2' and comes back. similary next subordinate
+starts with 'c' and adding next set of subordinates and comes back
+
+This is how we can imagine this as recursive faith of truth
+
+
