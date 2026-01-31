@@ -14,6 +14,10 @@ def generate_parenthesis(n:int):
         #First we have to add leftparanthesis not the right
         #hence we are checking left, suppose right paranthesis
         #greater than left wouldn't we arrive this? 
+        # The reason is that this below conditioon shows that 
+        # we have used more right parenthesis than the leftparenthesis
+        # which is invalid, that means all the cases
+        #like ())) )))  are invalid  where leftnum > rightnum
         if leftnum >  rightnum or leftnum < 0 or rightnum < 0:
             return 
         #Base case 2: Result case, when leftnum=rightnum =0 
