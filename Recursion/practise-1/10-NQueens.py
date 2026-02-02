@@ -35,11 +35,16 @@ def NQueens(n:int):
             return
         #Now check for each col where we can
         #place the current queen 'i'
+        #Here we need to assume that we want to place
+        #the queen at (len(slate),col)
         for col in range(0,n):
             if check_conflict(col,slate):
                 #There is no queen present at the position (len(slate),col)
                 #hence we are adding to the slate
                 slate.append(col)
+                #I have added the i'th queen to the slate 
+                #Now i am calling subordinate to add i+1'st queen to slate
+                #i don't care and handed over to subordinate
                 helper(slate,i+1,n)
                 slate.pop()
     helper([],0,n)
