@@ -1,0 +1,98 @@
+Explaining the N Queens problem:
+In a NXN chess board no 2 queens can attack each Other
+We have to place N queens such that No  queens attack each other
+
+Queens area of regime is:
+
+1. complete row
+2. Diagonal position
+3. Complete coloumn
+
+How the logic works:
+
+slate list stores columns positions: 
+slate[i] = coloumn_number
+
+For ex:  [1,3,0,2] means queen at the position
+
+(0,1) => first row and 1st coloumn
+(1,3) => second row 3rd coloumn
+(2,0) => second row 1st coloumn
+The index of slate says the row value
+
+1. Tries placing the a queen each coloumn of the 
+current row
+
+2. Only place if no conflict with existing queens
+
+3. backtracks by removing the queen if the 
+path doesn't works
+
+Above is the main goal
+
+How conflict is detected?
+
+1. Coloumn check: Is another queen same coloumn?
+
+2. Diagonal check: If row differences equal to the coloumns difference if 
+they are in same diagonal 
+
+3. base case:  When i == n, all queens are 
+successfully placed
+
+For ex: The program finds solution like this:
+N=4
+
+[1,3,0,2]  
+
+What we are doing is for every col we are doing the following
+
+We are checking  there is a conflicting queen already exists at the
+the row starting from '0' to len(slate) 
+
+For that we need to find 2 conditions:
+1. If queen already exist in the slate at the given 'row' in the 
+slate with condition slate[rowindex] == col, that means existing
+'col' where we are doing the search for the queen is already present
+in the state[rowindex]. 
+
+2. Second condition is: queen at position (len(slate),col) where we
+want to keep the queen and already exisitng queen at (rowindex,slate[rowindex]) 
+check the rowdiff and coldiff, check both are same
+rowdiff = abs(rowindex-len(slate)) and 
+coldiff = abs(col-slate[rowindex]) 
+both are same  
+
+Second time i am writing
+
+This is how nqueens works:
+
+1. first we are working to place i th queen
+2. for the i'th queen the position we are targetting to place 
+is (len(slate),col). 
+3. For this position we are checking whether any 
+other queens are already present by checking the conflict
+4. For the conflict function what we have we check the following
+    1. for the given col where we want to place the i th queen,loop through
+    all the rows from 0 to len(slate) and for each row check the following
+        a. already any queen is present in the i'th row with the following check
+         slate[rowindex] == col. If both are same that means already there is 
+         a queen at the col.
+         col check doesn't matter which row, because each col of queen covers
+         complete vertical place. In that case we need rowindex for the slate?
+         The reason is: we are searching in slate at a given rowindex any queen
+         already placed in a same col. For that, ideally col doesn't depend 
+         on the row. This check is going to cover all queens that are present so far
+         anything is already matching the given col 
+       b. Next we are checking for all existing queens which are referenced by the rowindex
+       that whether any of the queen row col diff check is matching. row cal diff check is
+       to ensure that there there is a diagonal match of any of the existing queens
+       referred by travelling rowindex from 0 to len(slate) where existing queen
+       is referred by (rowindex,slate[rowindex])  and new queen which we have to place
+       is refrred by (len(slate),col) 
+       rowdiff = abs(rwoindex - len(slate))
+       coldiff = abs(col - slate[rowindex])
+       if both are same then that means there is already queen exists diagonal position
+       to the current queen at (len(slate),col)
+       
+
