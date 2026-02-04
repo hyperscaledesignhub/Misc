@@ -94,5 +94,34 @@ other queens are already present by checking the conflict
        coldiff = abs(col - slate[rowindex])
        if both are same then that means there is already queen exists diagonal position
        to the current queen at (len(slate),col)
-       
+
+Now i want to understand the recursion, see the first for loop
+is already checking for columns from 0 to n, to place the queen 
+
+Okay that means i am checking to place i'th queen from the 
+coloumns 0 to n, where can i place it.
+
+After i found a place to keep it in a col, i am calling by subordinate
+to place the second queen, i+1'st queen. Then why should i again 
+check remaining coloumns from col to n to place the i'th queen? I have 
+already placed it, right at col?
+
+This happens because i am calling my subordinate, my subordinate mayn't be able
+to find a place his queen in any coloumn then he comesback
+Now i remove my previous place of queen and try to check whether i can place
+my queen in next col, if i am then i call again subordinate to go and try
+If not then i go to my parent and ask them to change his queen such that 
+i can place my queen again and try. 
+This is where proper place searching happens 
+
+Suppose in a sucessful case Why again i need to try from col to n?
+
+The reason is even after a successful path from my subordinate 
+across the hierarchy, we again bactrack from col to n to identify 
+next valid solution 
+Thats why in the base case we are checking that if queen count i is 
+equal to 'n' then we are adding the result. Such that subsequent
+cases backtracking happens, and this result is erased by me after my subordinate returned
+
+
 
