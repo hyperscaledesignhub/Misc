@@ -123,5 +123,48 @@ Thats why in the base case we are checking that if queen count i is
 equal to 'n' then we are adding the result. Such that subsequent
 cases backtracking happens, and this result is erased by me after my subordinate returned
 
+I am again writing the text for NQueens
+
+This is what we are doing from recursion prospective:
+
+We are first calling for the i'th queen.
+For that we are checking from col =0 to col =n all the coloumns
+recursively 
+And we want to place our queen in the position of (len(slate),col)
+For each of the coloumn we are checking the following
+1. If there is already an existing queen is present here, in the col, because
+no matter which row we place queen, if already in the existing coloumn there
+is a queen then we can't place our current queen
+2. We are making the diagonal test, that means here we 
+are assuming that old queen is present in rowindex,slate[rowindex] 
+and new queen to be placed present under (len(slate),col)
+we are checking both rowdiff and coldiff are same. This confirms
+our diagaonal test
+
+Rememeber we are doing above 2 tests from 0'th row to len(slate), because
+from len(slate) to n, all are empty yet no queens are placed
+
+See above method gives us assurance that we can place a queen or not
+
+Now interseting part is recursion:
+
+When i applied recursion to manager subrdoinate approach:
+
+I am trying to check from 0 to n-1 coloumns to place i'th queen
+If i could place it, then doing the following
+i am calling my subordinate to place i+1'st queen in the correct position
+Here there are 2 cases
+case-1:
+My subordinate unable to palce the queen across 0 to n-1 coloumns
+Then what i am doing:
+i am deleting my i'th position of the queen and again trying to see 
+if i could place it from col+1 to n-1 position any place such that
+this helps my siubordinate to place his queen
+
+Case-2:
+In case my subordinate is able to place queen successfuly also i am 
+removing my current queen at col, and checking whether i can place 
+in any other coloumns from col to n-1 such that this turns out to be another
+combination.
 
 
