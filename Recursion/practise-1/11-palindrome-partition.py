@@ -14,6 +14,9 @@ def palindrome_partition(s:str):
     def helper(array:str,i:int,slate:list[str]):
         
         #Back tracking cases
+        #If we keep the backtracking case after the 
+        # Based case below we won't get the correct
+        #result 
         if len(slate) > 0 and not ispalindrome(slate[-1]):
             return
         
