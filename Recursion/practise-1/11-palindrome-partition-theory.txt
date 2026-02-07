@@ -1,0 +1,46 @@
+In the palindrome partition our goal is what?
+we have to find out all the possible ways that we can split the
+string in such a way that we need to find all the palindromes
+
+aabaa->
+all single letters are palindromes:
+['a','a','b','a','a']
+['aa','b', 'aa'] are also palindromes
+['a','aba','a'] are palindromes
+['aabaa'] is also a palindrome
+
+How we are doing?
+As per the manager subordinate theory
+
+I am responsible for i'th position of the string,
+like from i'th position to len(str)
+
+And i am adding to slate i'th, i-i+1; i-i+2;... upto i:len(str)
+After adding a single number to slate, i am calling my subordinate
+to add slate all palindromes starting from i+1'st position onwards
+So i add i'th element to the slate and i call my subordinate 
+to start from i+1. 
+For ex:
+take aabaa
+I am starting from 0'th position:
+added following to slate: [a], called subordinate
+start from 1'st: Checked slate is palindrome 
+in the begining and its added to result. slate
+remaining same
+[aa], Again this is added to result
+
+This subordinate calls next, he adds aab, this is not palindrome
+returned.. 
+Then this subordinate removes from slate
+adds  'a', but a is a palindrome then why its not 
+added to result
+
+See we add the result after i reaches to length of the string.
+slate is not going to get added immediately after last slate value is a palindrome
+
+See i am going to add the value that i have received from my manager 
+
+in the begining, if last value that my manager added is not a palindrome 
+
+i return back.  
+If i value of my manager equal to lenght of the string then i add 
